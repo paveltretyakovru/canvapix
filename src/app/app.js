@@ -1,10 +1,12 @@
-export default class App {
-    constructor() {
-        console.log('App class constructor!')
-    }
+import * as $ from 'jquery'
+import * as Mn from 'backbone.marionette'
 
-    createCanvas(options = {}) {
-        debugger
-        console.log('Creating canvas fucntion')
-    }
-}
+import { AppView } from './app.view'
+
+export const App = Mn.Application.extend({
+  region: 'main',
+
+  onStart() {
+    this.showView(new AppView())
+  }
+})

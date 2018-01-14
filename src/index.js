@@ -1,5 +1,5 @@
-import App from './app/app'
+import * as $ from 'jquery'
+import { App } from './app/app'
 
 const app = new App()
-
-app.createCanvas()
+app.start()
