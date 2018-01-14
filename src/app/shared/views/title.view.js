@@ -1,18 +1,14 @@
-import 'backbone'
-import 'lodash'
+import * as Marionette from 'backbone.marionette'
 
 const template = 'Welcome to the Canvapix'
 
-export const TitleView = Backbone.View.extend({
-  tagName: 'h5',
-  template: _.template(template),
 
-  render() {
-    this.$el.html(this.template({}))
-    return this
-  },
+export class TitleView extends Marionette.View {
+  tagName() { return 'h5' }
+  template() { return _.template(template)() }
 
-  initialize() {
+  constructor(options) {
+    super(options)
     this.render()
   }
-})
+}
