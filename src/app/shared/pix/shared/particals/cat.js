@@ -9,4 +9,9 @@ export class Cat extends ImagePartice {
     super(options)
     console.log('Cat constructor', { options })
   }
+
+  step() {
+    this.x += 1
+    this.y += 1
+  }
 }

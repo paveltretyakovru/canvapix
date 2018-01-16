@@ -1,14 +1,25 @@
+const defaultOptions = {
+  x: 0,
+  y: 0,
+}
+
 /**
  * @property (Element)  canvas: Canvas element
  * @property (object)   context: contect of canvas
  */
 export class Particle {
   constructor(options = {}) {
-    console.log('Particle constructor', { options })
+    this.x = options.x || defaultOptions.x
+    this.y = options.y || defaultOptions.y
     this.canvas = options.canvas || document.querySelector('canvas')
+
     if(this.canvas) {
       this.context = this.canvas.getContext("2d")
     }
+  }
+
+  step() {
+    
   }
 
   /**
@@ -16,6 +27,7 @@ export class Particle {
    */
   drawFrame(callback) {
     this.clearContext()
+    callback()
   }
 
   /**

@@ -5,5 +5,7 @@ export class Pix {
     this.pixView = new PixView()
   }
 
-  view() { return this.pixView }
+  view() {
+    return this.pixView
+  }
 }

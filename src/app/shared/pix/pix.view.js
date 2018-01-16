@@ -15,8 +15,24 @@ export class PixView extends Marionette.View {
     this.render()
   }
 
+  canvas(selector = '') {
+    if (selector !== '') {
+      this.canvas = this.$el.find(selector)[0]
+      return this.canvas
+    } else {
+      if(this.canvas) {
+        return this.canvas
+      } else {
+        this.canvas = this.$el.find('canvas')[0]
+        return this.canvas
+      }
+    }
+  }
+
   onRender() {
-    const catPartical = new Cat()
+    const catPartical = new Cat({
+      canvas: this.canvas()
+    })
 
     // Определение контекста рисования
     const canvas = this.$el.find('canvas')[0];
@@ -45,7 +61,10 @@ export class PixView extends Marionette.View {
       squarePosition_x += 1;
       
       if (squarePosition_y <= canvas.height) {
-        setTimeout(() => { drawFrame() }, 24) // Рисуем следующий кадр через 20 миллисекунд
+        // Рисуем следующий кадр через 20 миллисекунд
+        setTimeout(() => {
+          drawFrame()
+        }, 24)
       } else {
         squarePosition_y = 0
         squarePosition_x = 0
